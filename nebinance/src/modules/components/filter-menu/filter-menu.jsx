@@ -4,8 +4,8 @@ import "./filter-menu.sass";
 
 const FILTERS_BTN = [
   {
-    text: "Favorite",
-    id: "favorite",
+    text: "isView",
+    id: "isView",
   },
   {
     text: "Hot",

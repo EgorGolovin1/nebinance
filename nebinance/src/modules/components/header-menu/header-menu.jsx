@@ -8,7 +8,7 @@ const HeaderMenu = () => {
       <div className="container">
         <div className="header-wrapper">
           <div className="logo-wrapper">
-            <img alt="icon" src="./logo.svg" className="logo" />
+            <img alt="logo" src="./logo.svg" className="logo" />
             <h2 className="logo_tag">CRYPTON</h2>
           </div>
           <button href="#" className="menu_link">
@@ -26,10 +26,10 @@ const HeaderMenu = () => {
               className="search_panel"
               placeholder="Search coin"
             />
-            <img alt="111" className="search_icon" src="./search.svg" />
+            <img alt="search" className="search_icon" src="./search.svg" />
             <button className="search_button">Search</button>
           </div>
-          <img alt="111" className="enter_icon" src="./enter.svg" />
+          <img alt="enter" className="enter_icon" src="./enter.svg" />
         </div>
       </div>
     </header>
