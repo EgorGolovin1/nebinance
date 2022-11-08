@@ -17,6 +17,7 @@ const ListItem = ({ tokens, openModal }) => {
           name={item.name}
           abbreviation={item.abbreviation}
           isView={item.isView}
+          isEditing={item.isEditing}
         />
       ))}
       <img src="./lightning.svg" alt="lightning" className="item_back" />

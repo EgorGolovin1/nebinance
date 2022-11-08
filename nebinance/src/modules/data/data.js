@@ -8,6 +8,7 @@ export const coins = [
     abbreviation: "BTC",
     myAmount: 0,
     annotation: "",
+    isEditing: false,
   },
   {
     src: "./crypto-items/BNB.svg",
@@ -16,6 +17,7 @@ export const coins = [
     abbreviation: "BNB",
     myAmount: 0,
     annotation: "",
+    isEditing: false,
   },
   {
     src: "./crypto-items/ADA.svg",
@@ -24,6 +26,7 @@ export const coins = [
     abbreviation: "ADA",
     myAmount: 0,
     annotation: "",
+    isEditing: false,
   },
   {
     src: "./crypto-items/ETH.svg",
@@ -32,6 +35,7 @@ export const coins = [
     abbreviation: "ETH",
     myAmount: 0,
     annotation: "",
+    isEditing: false,
   },
   {
     src: "./crypto-items/TWT.svg",
@@ -41,6 +45,7 @@ export const coins = [
     isView: false,
     myAmount: 353,
     annotation: "",
+    isEditing: false,
   },
 ];
 

@@ -4,7 +4,7 @@ import "./filter-menu.sass";
 
 const FILTERS_BTN = [
   {
-    text: "isView",
+    text: "Favorite",
     id: "isView",
   },
   {
