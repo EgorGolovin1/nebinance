@@ -1,6 +1,6 @@
 .crypto-list
     display: flex
-    justify-content: space-between
+    justify-content: center
     flex-wrap: wrap
     flex-direction: row
     scrollbar-width: thin
@@ -10,7 +10,23 @@
     z-index: -1
     padding: 45px
 
-
+.form
+    text-align: center
+    margin-top: 20px
+    .search
+        &_panel-list
+            background: rgba(0, 0, 0,0 )
+            border: none
+            border-bottom: 2px solid #E6E8EC
+            padding: 5px 6px 5px 8px
+            gap: 18px
+            width: 256px
+            height: 20px
+            color: #E6E8EC
+            font-weight: 700
+            font-size: 16px
+            &:focus-visible
+                outline: none
 .item_back
     position: absolute
     z-index: -1

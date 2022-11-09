@@ -24,7 +24,7 @@ const HeaderMenu = () => {
             <input
               type="text"
               className="search_panel"
-              placeholder="Search coin"
+              placeholder="Global search"
             />
             <img alt="search" className="search_icon" src="./search.svg" />
             <button className="search_button">Search</button>
