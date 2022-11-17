@@ -1,35 +1,35 @@
 import React from "react";
 
-import "./header-menu.sass";
+import classes from "./header-menu.module.sass";
 
 const HeaderMenu = () => {
   return (
-    <header className="header">
-      <div className="container">
-        <div className="header-wrapper">
-          <div className="logo-wrapper">
-            <img alt="logo" src="./logo.svg" className="logo" />
-            <h2 className="logo_tag">CRYPTON</h2>
+    <header className={classes.header}>
+      <div className={classes.container}>
+        <div className={classes.wrapper}>
+          <div className={classes.logo_wrapper}>
+            <img alt="logo" src="./logo.svg" className={classes.logo} />
+            <h2 className={classes.tag}>CRYPTON</h2>
           </div>
-          <button href="#" className="menu_link">
+          <button href="#" className={classes.link}>
             Main Page
           </button>
-          <button href="#" className="menu_link">
+          <button href="#" className={classes.link}>
             Events
           </button>
-          <button href="#" className="menu_link">
+          <button href="#" className={classes.link}>
             Hot News
           </button>
-          <div className="input-wrapper">
+          <div className={classes.input_wrapper}>
             <input
               type="text"
-              className="search_panel"
+              className={classes.panel}
               placeholder="Search coin"
             />
-            <img alt="search" className="search_icon" src="./search.svg" />
-            <button className="search_button">Search</button>
+            <img alt="search" className={classes.icon} src="./search.svg" />
+            <button className={classes.button}>Search</button>
           </div>
-          <img alt="enter" className="enter_icon" src="./enter.svg" />
+          <img alt="enter" className={classes.enter_icon} src="./enter.svg" />
         </div>
       </div>
     </header>

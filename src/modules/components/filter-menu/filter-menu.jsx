@@ -1,10 +1,10 @@
 import React from "react";
 
-import "./filter-menu.sass";
+import classes from "./filter-menu.module.sass";
 
 const FILTERS_BTN = [
   {
-    text: "isView",
+    text: "Favorite",
     id: "isView",
   },
   {
@@ -23,10 +23,10 @@ const FILTERS_BTN = [
 
 const FilterMenu = () => {
   return (
-    <div className="container filter">
-      <div className="filter-wrapper">
+    <div className={classes.container}>
+      <div className={classes.wrapper}>
         {FILTERS_BTN.map(({ text, id }) => (
-          <button key={id} className="btn">
+          <button key={id} className={classes.btn}>
             {text}
           </button>
         ))}

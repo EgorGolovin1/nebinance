@@ -1,12 +1,6 @@
-import { createSlice, createSelector } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import { v4 as uuidv4 } from "uuid";
-import { coins, dataIcons } from "../data/data";
-
-const getTokens = (state) => state.tokens.tokens;
-
-export const getViewToken = createSelector(getTokens, (tokens) => {
-  return tokens.filter((t) => t.isView);
-});
+import { coins, dataIcons } from "../data/coins";
 
 const initialValue = {
   tokens: coins,
@@ -32,7 +26,7 @@ export const tokensSlice = createSlice({
         ...action.payload,
         src: src,
         id: id,
-        main: false,
+        isView: false,
       });
     },
   },

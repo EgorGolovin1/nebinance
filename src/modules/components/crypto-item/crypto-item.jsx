@@ -5,38 +5,44 @@ import classNames from "classnames/bind";
 
 import { toggleToken } from "../../redux/tokensSlice";
 
-import "./crypto-item.sass";
+import classes from "./crypto-item.module.sass";
 
-const CryptoItem = ({ src, id, name, isView, openModal }) => {
+const CryptoItem = (props) => {
   const dispatch = useDispatch();
 
-  const doView = () => {
-    dispatch(toggleToken(id));
-    openModal();
+  const viewToken = () => {
+    dispatch(toggleToken(props.id));
+    props.openViewModal();
   };
 
   return (
-    <div className="item gradient-border  ">
+    <div className={classes.item}>
       <button
-        onClick={() => doView()}
-        className={classNames("eye", { isView: isView })}
+        onClick={() => viewToken()}
+        className={classNames(classes.eye, props.isView && classes.isView)}
       >
-        <img alt="eye" className="picture" src="./view.svg" />
+        <img alt="eye" className={classes.picture} src="./view.svg" />
       </button>
-      <button className="item_button">
-        <img src={src} alt="./search.svg" className="item_picture" id={id} />
-        {name}
+      <button className={classes.button}>
+        <img
+          src={props.src}
+          alt="./search.svg"
+          className={classes.item_picture}
+          id={props.id}
+        />
+        {props.name}
       </button>
     </div>
   );
 };
 
 CryptoItem.propTypes = {
+  props: PropTypes.object,
   src: PropTypes.string,
   id: PropTypes.string,
   name: PropTypes.string,
   isView: PropTypes.bool,
-  openModal: PropTypes.func,
+  openViewModal: PropTypes.func,
 };
 
 export default CryptoItem;
