@@ -14,8 +14,8 @@ const AddModalWindow = ({ closeAddModal, isOpen }) => {
 
   const {
     register,
-    handleSubmit,
     formState: { errors },
+    handleSubmit,
     reset,
   } = useForm();
 
@@ -28,19 +28,22 @@ const AddModalWindow = ({ closeAddModal, isOpen }) => {
         abbreviation: data.abbreviation,
         src: "./crypto-items/" + upAbr + ".svg",
         myAmount: Number(data.amount),
-        annotation: data.annotation,
+        annotation: data.note,
       })
     );
     closeAddModal();
     reset();
   };
+
   return (
     <Modal
+      id="modal-add"
       style={customStyles}
       ariaHideApp={false}
       isOpen={isOpen}
       onRequestClose={closeAddModal}
       contentLabel="Add item"
+      shouldReturnFocusAfterClose={true}
     >
       <form onSubmit={handleSubmit(onSubmit)} className={classes.form}>
         <label htmlFor="name" className={classes.label}>
@@ -59,6 +62,7 @@ const AddModalWindow = ({ closeAddModal, isOpen }) => {
             })}
             className={classes.input}
             placeholder="Bitcoin"
+            type="text"
           />
           <div style={{ height: 20 }} className={classes.error}>
             {errors?.name && <p>{errors?.name?.message || "Erorr!"}</p>}
@@ -80,6 +84,7 @@ const AddModalWindow = ({ closeAddModal, isOpen }) => {
             })}
             className={classes.input}
             placeholder="BTC"
+            type="text"
           />
           <div style={{ height: 20 }} className={classes.error}>
             {errors?.abbreviation && (
@@ -105,7 +110,11 @@ const AddModalWindow = ({ closeAddModal, isOpen }) => {
           />
         </label>
         <div className={classes.wrapper}>
-          <button onClick={closeAddModal} className={classes.button}>
+          <button
+            type="button"
+            onClick={() => closeAddModal()}
+            className={classes.button}
+          >
             Cancel
           </button>
           <input value={"Accept"} type="submit" className={classes.button} />

@@ -31,7 +31,7 @@ const CryptoApp = () => {
       <FilterMenu />
       <ListItems openViewModal={openViewModal} />
       <AddModalWindow
-        onRequestClose={closeAddModal}
+        // onRequestClose={closeAddModal}
         isOpen={modalAddIsOpen}
         closeAddModal={closeAddModal}
       />
