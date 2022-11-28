@@ -17,14 +17,12 @@ export const tokensSlice = createSlice({
     },
     addToken(state, action) {
       const id = uuidv4();
-      let src;
-      let way = state.icons.filter((item) => item.src === action.payload.src);
-      if (way.length) {
-        src = way[0].src;
-      } else src = "./unknown.svg";
       state.tokens.push({
         ...action.payload,
-        src: src,
+        src:
+          {
+            ...state.icons.find((item) => item.src === action.payload.src),
+          }.src || "./unknown.svg",
         id: id,
         isView: false,
       });

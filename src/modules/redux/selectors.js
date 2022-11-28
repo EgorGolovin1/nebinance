@@ -1,11 +1,11 @@
 import { createSelector } from "@reduxjs/toolkit";
 
-export const getTokens = (state) => state.tokens.tokens;
+export const rootSelector = (state) => state.tokens.tokens;
 
-export const getViewToken = createSelector(getTokens, (tokens) => {
-  return tokens.filter((t) => t.isView);
+export const viewTokenSelector = createSelector(rootSelector, (tokens) => {
+  return tokens.find((t) => t.isView) || {};
 });
 
-export const tokens = createSelector(getTokens, (tokens) => {
+export const tokenSelector = createSelector(rootSelector, (tokens) => {
   return tokens;
 });

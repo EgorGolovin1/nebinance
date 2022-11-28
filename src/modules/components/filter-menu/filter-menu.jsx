@@ -1,6 +1,6 @@
 import React from "react";
 
-import classes from "./filter-menu.module.sass";
+import s from "./filter-menu.module.sass";
 
 const FILTERS_BTN = [
   {
@@ -23,10 +23,10 @@ const FILTERS_BTN = [
 
 const FilterMenu = () => {
   return (
-    <div className={classes.container}>
-      <div className={classes.wrapper}>
+    <div className={s.container}>
+      <div className={s.wrapper}>
         {FILTERS_BTN.map(({ text, id }) => (
-          <button key={id} className={classes.btn}>
+          <button key={id} className={s.btn}>
             {text}
           </button>
         ))}

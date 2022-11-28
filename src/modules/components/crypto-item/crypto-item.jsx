@@ -5,7 +5,7 @@ import classNames from "classnames/bind";
 
 import { toggleToken } from "../../redux/tokensSlice";
 
-import classes from "./crypto-item.module.sass";
+import s from "./crypto-item.module.sass";
 
 const CryptoItem = (props) => {
   const dispatch = useDispatch();
@@ -16,18 +16,18 @@ const CryptoItem = (props) => {
   };
 
   return (
-    <div className={classes.item}>
+    <div className={s.item}>
       <button
         onClick={() => viewToken()}
-        className={classNames(classes.eye, props.isView && classes.isView)}
+        className={classNames(s.eye, props.isView && s.isView)}
       >
-        <img alt="eye" className={classes.picture} src="./view.svg" />
+        <img alt="eye" className={s.picture} src="./view.svg" />
       </button>
-      <button className={classes.button}>
+      <button className={s.button}>
         <img
           src={props.src}
           alt="./search.svg"
-          className={classes.item_picture}
+          className={s.item_picture}
           id={props.id}
         />
         {props.name}

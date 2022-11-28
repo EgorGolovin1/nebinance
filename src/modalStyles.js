@@ -10,7 +10,7 @@ export const customStyles = {
     padding: "40px 20px",
     zIndex: 100,
     minWidth: "250px",
-    minHeight: "200px",
+    minHeight: "185px",
     border: "none",
     borderRadius: "50px",
   },

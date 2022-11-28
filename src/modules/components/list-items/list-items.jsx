@@ -1,36 +1,42 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 
 import CryptoItem from "../crypto-item/crypto-item";
-import { tokens } from "../../redux/selectors";
+import ViewModalWindow from "../modal-windows/view-modal";
+import { tokenSelector } from "../../redux/selectors";
 
-import classes from "./list-items.module.sass";
+import s from "./list-items.module.sass";
 
-const ListItems = ({ openViewModal }) => {
-  const tokensArr = useSelector(tokens);
+const ListItems = () => {
+  const [modalViewIsOpen, setViewModalIsOpen] = useState(false);
+  function openViewModal() {
+    setViewModalIsOpen(true);
+  }
+  function closeViewModal() {
+    setViewModalIsOpen(false);
+  }
+
+  const tokensArr = useSelector(tokenSelector);
   return (
-    <div className={classes.list}>
-      {tokensArr.map((item) => (
-        <CryptoItem
-          key={item.id}
-          openViewModal={openViewModal}
-          {...item}
-          isView={item.isView}
-        />
-      ))}
-      <img src="./lightning.svg" alt="lightning" className={classes.item} />
-      <img
-        src="./lightning.svg"
-        alt="lightning"
-        className={classes.item_right}
+    <>
+      <div className={s.list}>
+        {tokensArr.map((item) => (
+          <CryptoItem
+            {...item}
+            key={item.id}
+            openViewModal={openViewModal}
+            isView={item.isView}
+          />
+        ))}
+        <img src="./lightning.svg" alt="lightning" className={s.item} />
+        <img src="./lightning.svg" alt="lightning" className={s.item_right} />
+      </div>
+      <ViewModalWindow
+        isOpen={modalViewIsOpen}
+        closeViewModal={closeViewModal}
       />
-    </div>
+    </>
   );
-};
-ListItems.propTypes = {
-  tokensArr: PropTypes.array,
-  openViewModal: PropTypes.func,
 };
 
 export default ListItems;
