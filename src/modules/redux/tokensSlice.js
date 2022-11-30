@@ -20,9 +20,8 @@ export const tokensSlice = createSlice({
       state.tokens.push({
         ...action.payload,
         src:
-          {
-            ...state.icons.find((item) => item.src === action.payload.src),
-          }.src || "./unknown.svg",
+          state.icons.find((item) => item.src === action.payload.src)?.src ||
+          "./unknown.svg",
         id: id,
         isView: false,
       });

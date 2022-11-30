@@ -2,11 +2,13 @@
     display: flex
     justify-content: left
     flex-wrap: wrap
-    flex-direction: row
     scrollbar-width: thin
-    margin: 50px 80px 50px 100px
+    margin-left: auto
+    margin-right: auto
+    width: fit-content
     overflow: hidden
     z-index: -1
+    max-width: 960px
 
 .item,.item_right
     position: absolute
@@ -31,6 +33,9 @@
             left: 830px
 
 @media (min-width: 0px) and (max-width: 1090px) 
+    .list
+        max-width: 640px
+
     .item,.item_right
         top: 30px
         left: -450px
@@ -41,7 +46,7 @@
 
 @media (min-width: 0px) and (max-width: 780px) 
     .list
-        min-width: 300px
+        max-width: 540px
     .item,.item_right
         top: 90px
         left: -450px
@@ -49,6 +54,9 @@
             top: 100px
             left: 400px
 @media (min-width: 0px) and (max-width: 550px) 
+    .list
+        max-width: 405px
+        min-width: 405px
     .item,.item_right
         top: 135px
         left: -450px
