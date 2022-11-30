@@ -1,0 +1,51 @@
+.wrapper
+    height: 150px
+    display: flex
+    justify-content: space-between
+    flex-direction: column
+    text-align: center
+
+.button
+    width: 25px
+    height: 25px
+    cursor: pointer
+    background: rgba(0, 0, 0, 0)
+    position: absolute
+    top: 10px
+    right: 25px
+    background-image: none
+    -webkit-appearance: none
+    -moz-appearance: none
+    border: none
+    &::before 
+        content: ""
+        border-right: 16px solid white
+        height: 2px
+        position: absolute
+        transform: rotate(135deg)
+        left: 4px
+    &::after 
+        content: ""
+        border-right: 16px solid white
+        height: 2px
+        position: absolute
+        transform: rotate(45deg)
+        left: 4px
+    &:hover::after 
+        transition: 0.5s
+        border-right: 16px solid red
+    &:hover::before 
+        transition: 0.5s
+        border-right: 16px solid red
+
+.item
+    color: white
+    text-transform: uppercase
+    font-weight: 700
+    font-size: 20px
+    margin: 10px 0 10px 0
+
+.span
+    color: #3772FF
+    font-size: 16px
+    font-weight: 700
