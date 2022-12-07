@@ -24,11 +24,32 @@ export const tokensSlice = createSlice({
           "./unknown.svg",
         id: id,
         isView: false,
+        isEditing: false,
       });
+    },
+    editToken(state, action) {
+      const token = state.tokens.find((item) => item.id === action.payload);
+      token.isEditing = true;
+    },
+    deleteToken(state, action) {
+      const tokens = state.tokens.filter((item) => item.id !== action.payload);
+      state.tokens = tokens;
+    },
+    finishEditing(state, action) {
+      let token = state.tokens.find((item) => item.id === action.payload.id);
+      token.src =
+        state.icons.find((item) => item.src === action.payload.src)?.src ||
+        "./unknown.svg";
+      token.name = action.payload.name;
+      token.abbreviation = action.payload.abbreviation;
+      token.myAmount = action.payload.myAmount;
+      token.annotation = action.payload.annotation;
+      token.isEditing = false;
     },
   },
 });
 
-export const { toggleToken, addToken } = tokensSlice.actions;
+export const { toggleToken, addToken, editToken, finishEditing, deleteToken } =
+  tokensSlice.actions;
 
 export default tokensSlice.reducer;

@@ -6,32 +6,40 @@ export const coins = [
     name: "bitcoin",
     id: uuidv4(),
     abbreviation: "BTC",
+    isView: false,
     myAmount: 0,
     annotation: "",
+    isEditing: false,
   },
   {
     src: "./crypto-items/BNB.svg",
     name: "bnb",
     id: uuidv4(),
     abbreviation: "BNB",
+    isView: false,
     myAmount: 0,
     annotation: "",
+    isEditing: false,
   },
   {
     src: "./crypto-items/ADA.svg",
     name: "cardano",
     id: uuidv4(),
     abbreviation: "ADA",
+    isView: false,
     myAmount: 0,
     annotation: "",
+    isEditing: false,
   },
   {
     src: "./crypto-items/ETH.svg",
     name: "ethereum",
     id: uuidv4(),
     abbreviation: "ETH",
+    isView: false,
     myAmount: 0,
     annotation: "",
+    isEditing: false,
   },
   {
     src: "./crypto-items/MASK.svg",
@@ -41,6 +49,7 @@ export const coins = [
     isView: false,
     myAmount: 0,
     annotation: "",
+    isEditing: false,
   },
   {
     src: "./crypto-items/KLAY.svg",
@@ -50,6 +59,7 @@ export const coins = [
     isView: false,
     myAmount: 0,
     annotation: "",
+    isEditing: false,
   },
   {
     src: "./crypto-items/SOL.svg",
@@ -59,6 +69,7 @@ export const coins = [
     isView: false,
     myAmount: 0,
     annotation: "",
+    isEditing: false,
   },
   {
     src: "./crypto-items/TWT.svg",
@@ -68,6 +79,7 @@ export const coins = [
     isView: false,
     myAmount: 353,
     annotation: "",
+    isEditing: false,
   },
 ];
 

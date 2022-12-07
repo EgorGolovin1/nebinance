@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 
 import CryptoItem from "../crypto-item/crypto-item";
 import ViewModalWindow from "../modal-windows/view-modal";
+import EditModalWindow from "../modal-windows/edit-modal";
 import { tokenSelector } from "../../redux/selectors";
 
 import s from "./list-items.module.sass";
@@ -16,6 +17,14 @@ const ListItems = () => {
     setViewModalIsOpen(false);
   }
 
+  const [modalEditIsOpen, setEditModalIsOpen] = useState(false);
+  function openEditModal() {
+    setEditModalIsOpen(true);
+  }
+  function closeEditModal() {
+    setEditModalIsOpen(false);
+  }
+
   const tokensArr = useSelector(tokenSelector);
   return (
     <>
@@ -25,7 +34,7 @@ const ListItems = () => {
             {...item}
             key={item.id}
             openViewModal={openViewModal}
-            isView={item.isView}
+            openEditModal={openEditModal}
           />
         ))}
         <img src="./lightning.svg" alt="lightning" className={s.item} />
@@ -34,6 +43,10 @@ const ListItems = () => {
       <ViewModalWindow
         isOpen={modalViewIsOpen}
         closeViewModal={closeViewModal}
+      />
+      <EditModalWindow
+        isOpen={modalEditIsOpen}
+        closeEditModal={closeEditModal}
       />
     </>
   );

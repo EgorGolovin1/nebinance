@@ -6,6 +6,10 @@ export const viewTokenSelector = createSelector(rootSelector, (tokens) => {
   return tokens.find((t) => t.isView) || {};
 });
 
+export const editTokenSelector = createSelector(rootSelector, (tokens) => {
+  return tokens.find((t) => t.isEditing) || {};
+});
+
 export const tokenSelector = createSelector(rootSelector, (tokens) => {
   return tokens;
 });

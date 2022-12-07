@@ -1,53 +1,63 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { useForm } from "react-hook-form";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Modal from "react-modal";
 
-import { addToken } from "../../redux/tokensSlice";
+import { finishEditing, deleteToken } from "../../redux/tokensSlice";
+import { editTokenSelector } from "../../redux/selectors";
 
 import { customStyles } from "../../../modalStyles";
-import s from "./add-modal.module.sass";
+import s from "./edit-modal.module.sass";
 
-const AddModalWindow = ({ closeAddModal, isOpen }) => {
+const EditModalWindow = ({ closeEditModal, isOpen }) => {
   const dispatch = useDispatch();
 
   const {
     register,
-    formState: { errors },
     handleSubmit,
+    formState: { errors },
     reset,
   } = useForm();
 
   const onSubmit = (data, e) => {
     e.preventDefault();
     dispatch(
-      addToken({
+      finishEditing({
+        id: edit.id,
+        src: `./crypto-items/${data.abbreviation.toUpperCase()}.svg`,
         name: data.name,
         abbreviation: data.abbreviation,
-        src: `./crypto-items/${data.abbreviation.toUpperCase()}.svg`,
         myAmount: Number(data.amount),
-        annotation: data.note,
+        annotation: data.annotation,
       })
     );
-    closeAddModal();
+    closeEditModal();
     reset();
   };
 
+  const deleteItem = (id) => {
+    dispatch(deleteToken(id));
+    reset();
+    closeEditModal();
+  };
+
+  const edit = useSelector(editTokenSelector);
   return (
     <Modal
-      id="modal-add"
       style={customStyles}
       ariaHideApp={false}
       isOpen={isOpen}
-      onRequestClose={closeAddModal}
-      contentLabel="Add item"
+      onRequestClose={closeEditModal}
+      contentLabel="Edit item"
+      shouldCloseOnEsc={false}
     >
       <form onSubmit={handleSubmit(onSubmit)} className={s.form}>
         <label htmlFor="name" className={s.label}>
           Coin name :
           <input
             {...register("name", {
+              shouldUnregister: true,
               required: "Required field!",
               minLength: {
                 value: 2,
@@ -59,8 +69,7 @@ const AddModalWindow = ({ closeAddModal, isOpen }) => {
               },
             })}
             className={s.input}
-            placeholder="Bitcoin"
-            type="text"
+            defaultValue={edit.name}
           />
           <div style={{ height: 20 }} className={s.error}>
             {errors?.name && <p>{errors?.name?.message || "Error!"}</p>}
@@ -70,6 +79,7 @@ const AddModalWindow = ({ closeAddModal, isOpen }) => {
           Coin abbreviation :
           <input
             {...register("abbreviation", {
+              shouldUnregister: true,
               required: "Required field!",
               minLength: {
                 value: 2,
@@ -82,7 +92,7 @@ const AddModalWindow = ({ closeAddModal, isOpen }) => {
             })}
             className={s.input}
             placeholder="BTC"
-            type="text"
+            defaultValue={edit.abbreviation}
           />
           <div style={{ height: 20 }} className={s.error}>
             {errors?.abbreviation && (
@@ -94,37 +104,37 @@ const AddModalWindow = ({ closeAddModal, isOpen }) => {
           Amount of coins :
           <input
             type="number"
-            defaultValue={0}
             className={s.input}
-            {...register("amount")}
+            {...register("amount", { shouldUnregister: true })}
             placeholder="0.005"
+            defaultValue={edit.myAmount}
           />
         </label>
         <label className={s.label}>
           <textarea
             className={s.comment}
-            {...register("note")}
-            placeholder="Some comments..."
+            {...register("annotation", { shouldUnregister: true })}
+            defaultValue={edit.annotation}
           />
         </label>
         <div className={s.wrapper}>
           <button
             type="button"
-            onClick={() => closeAddModal()}
-            className={s.button}
+            onClick={() => deleteItem(edit.id)}
+            className={s.button_delete}
           >
-            Cancel
+            Delete
           </button>
-          <input value={"Accept"} type="submit" className={s.button} />
+          <input value={"Save"} type="submit" className={s.button} />
         </div>
       </form>
     </Modal>
   );
 };
 
-AddModalWindow.propTypes = {
-  closeAddModal: PropTypes.func,
+EditModalWindow.propTypes = {
+  closeEditModal: PropTypes.func,
   isOpen: PropTypes.bool,
 };
 
-export default AddModalWindow;
+export default EditModalWindow;
