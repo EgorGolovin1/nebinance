@@ -23,7 +23,7 @@ const CryptoItem = (props) => {
   return (
     <div className={s.item}>
       <button
-        onClick={() => viewToken()}
+        onClick={viewToken}
         className={classNames(s.eye, props.isView && s.isView)}
       >
         <img alt="eye" className={s.picture} src="./view.svg" />
@@ -37,7 +37,7 @@ const CryptoItem = (props) => {
         />
         {props.name}
       </button>
-      <button onClick={() => isEdit()} className={s.button_edit}>
+      <button onClick={isEdit} className={s.button_edit}>
         <img src="../edit.svg" alt="pen" className={s.picture_edit} />
         Edit token
       </button>

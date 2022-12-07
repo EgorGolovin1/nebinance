@@ -16,7 +16,7 @@ const EditModalWindow = ({ closeEditModal, isOpen }) => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { Error },
     reset,
   } = useForm();
 
@@ -72,7 +72,7 @@ const EditModalWindow = ({ closeEditModal, isOpen }) => {
             defaultValue={edit.name}
           />
           <div style={{ height: 20 }} className={s.error}>
-            {errors?.name && <p>{errors?.name?.message || "Erorr!"}</p>}
+            {Error?.name && <p>{Error?.name?.message || "Erorr!"}</p>}
           </div>
         </label>
         <label htmlFor="abbrevation" className={s.label}>
@@ -95,8 +95,8 @@ const EditModalWindow = ({ closeEditModal, isOpen }) => {
             defaultValue={edit.abbreviation}
           />
           <div style={{ height: 20 }} className={s.error}>
-            {errors?.abbreviation && (
-              <p>{errors?.abbreviation?.message || "Erorr!"}</p>
+            {Error?.abbreviation && (
+              <p>{Error?.abbreviation?.message || "Erorr!"}</p>
             )}
           </div>
         </label>

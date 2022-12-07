@@ -14,7 +14,7 @@ const AddModalWindow = ({ closeAddModal, isOpen }) => {
 
   const {
     register,
-    formState: { errors },
+    formState: { Error },
     handleSubmit,
     reset,
   } = useForm();
@@ -63,7 +63,7 @@ const AddModalWindow = ({ closeAddModal, isOpen }) => {
             type="text"
           />
           <div style={{ height: 20 }} className={s.error}>
-            {errors?.name && <p>{errors?.name?.message || "Erorr!"}</p>}
+            {Error?.name && <p>{Error?.name?.message || "Erorr!"}</p>}
           </div>
         </label>
         <label htmlFor="abbrevation" className={s.label}>
@@ -85,8 +85,8 @@ const AddModalWindow = ({ closeAddModal, isOpen }) => {
             type="text"
           />
           <div style={{ height: 20 }} className={s.error}>
-            {errors?.abbreviation && (
-              <p>{errors?.abbreviation?.message || "Erorr!"}</p>
+            {Error?.abbreviation && (
+              <p>{Error?.abbreviation?.message || "Erorr!"}</p>
             )}
           </div>
         </label>
