@@ -1,16 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import classes from "./search-form.module.sass";
+import s from "./search-form.module.sass";
 
 const SearchForm = ({ value, setValue }) => {
   return (
-    <div className={classes.form}>
-      <form className={classes.search_form}>
+    <div className={s.form}>
+      <form className={s.search_form}>
         <input
           type="search"
           name="search"
-          className={classes.search_panel}
+          className={s.search_panel}
           placeholder="Search coin..."
           onChange={(e) => setValue(e.target.value)}
           defaultValue={value}
