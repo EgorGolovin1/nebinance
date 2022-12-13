@@ -1,8 +1,19 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+import { searchToken } from "../../redux/tokensSlice";
+import { rootSearchSelector } from "../../redux/selectors";
 
 import s from "./header-menu.module.sass";
 
 const HeaderMenu = () => {
+  const defaultValue = useSelector(rootSearchSelector);
+
+  const dispatch = useDispatch();
+  const search = (e) => {
+    dispatch(searchToken(e.target.value));
+  };
+
   return (
     <header className={s.header}>
       <div className={s.container}>
@@ -21,7 +32,13 @@ const HeaderMenu = () => {
             Hot News
           </button>
           <div className={s.input_wrapper}>
-            <input type="text" className={s.panel} placeholder="Search coin" />
+            <input
+              type="text"
+              className={s.panel}
+              placeholder="Search coin"
+              onChange={(e) => search(e)}
+              defaultValue={defaultValue}
+            />
             <img alt="search" className={s.icon} src="./search.svg" />
             <button className={s.button}>Search</button>
           </div>

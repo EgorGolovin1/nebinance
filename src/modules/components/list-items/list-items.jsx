@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 
 import CryptoItem from "../crypto-item/crypto-item";
@@ -7,7 +7,6 @@ import EditModalWindow from "../modal-windows/edit-modal";
 import { tokenSelector } from "../../redux/selectors";
 
 import s from "./list-items.module.sass";
-import SearchForm from "../search-form/search-form";
 
 const ListItems = () => {
   const [modalViewIsOpen, setViewModalIsOpen] = useState(false);
@@ -26,28 +25,12 @@ const ListItems = () => {
     setEditModalIsOpen(false);
   }
 
-  const tokensArr = useSelector(tokenSelector);
-
-  const [tokens, setTokens] = useState([]);
-  const [value, setValue] = useState("");
-
-  const getTokens = () => {
-    setTokens(tokensArr);
-  };
-
-  useEffect(() => {
-    getTokens();
-  });
-
-  const filteredTokens = tokens.filter((item) => {
-    return item.name.toLowerCase().includes(value.toLowerCase());
-  });
+  const tokens = useSelector(tokenSelector);
 
   return (
     <>
-      <SearchForm value={value} setValue={setValue} />
       <div className={s.list}>
-        {filteredTokens.map((item) => (
+        {tokens.map((item) => (
           <CryptoItem
             {...item}
             key={item.id}
