@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import CryptoItem from "../crypto-item/crypto-item";
 import ViewModalWindow from "../modal-windows/view-modal";
 import EditModalWindow from "../modal-windows/edit-modal";
-import { tokenSelector } from "../../redux/selectors";
+import { tokenSelector, searchSelector } from "../../redux/selectors";
 
 import s from "./list-items.module.sass";
 
@@ -26,6 +26,7 @@ const ListItems = () => {
   }
 
   const tokens = useSelector(tokenSelector);
+  const search = useSelector(searchSelector);
 
   return (
     <>
@@ -38,6 +39,11 @@ const ListItems = () => {
             openEditModal={openEditModal}
           />
         ))}
+        {search && !tokens.length ? (
+          <h2 className={s.text}>Nothing found...</h2>
+        ) : (
+          ""
+        )}
         <img src="./lightning.svg" alt="lightning" className={s.item} />
         <img src="./lightning.svg" alt="lightning" className={s.item_right} />
       </div>

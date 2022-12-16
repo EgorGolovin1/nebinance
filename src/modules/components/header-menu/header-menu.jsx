@@ -2,12 +2,12 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { searchToken } from "../../redux/tokensSlice";
-import { rootSearchSelector } from "../../redux/selectors";
+import { searchSelector } from "../../redux/selectors";
 
 import s from "./header-menu.module.sass";
 
 const HeaderMenu = () => {
-  const defaultValue = useSelector(rootSearchSelector);
+  const defaultValue = useSelector(searchSelector);
 
   const dispatch = useDispatch();
   const search = (e) => {
