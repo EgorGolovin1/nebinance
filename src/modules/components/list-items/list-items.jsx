@@ -40,7 +40,9 @@ const ListItems = () => {
           />
         ))}
         {search && !tokens.length ? (
-          <h2 className={s.text}>Nothing found...</h2>
+          <h2 className={s.text}>
+            Nothing found ... Try to change search term
+          </h2>
         ) : (
           ""
         )}
