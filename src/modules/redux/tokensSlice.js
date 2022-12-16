@@ -5,6 +5,7 @@ import { coins, dataIcons } from "../data/coins";
 const initialValue = {
   tokens: coins,
   icons: dataIcons,
+  searchParam: "",
 };
 
 export const tokensSlice = createSlice({
@@ -46,10 +47,19 @@ export const tokensSlice = createSlice({
       token.annotation = action.payload.annotation;
       token.isEditing = false;
     },
+    searchToken(state, action) {
+      state.searchParam = action.payload;
+    },
   },
 });
 
-export const { toggleToken, addToken, editToken, finishEditing, deleteToken } =
-  tokensSlice.actions;
+export const {
+  toggleToken,
+  addToken,
+  editToken,
+  finishEditing,
+  deleteToken,
+  searchToken,
+} = tokensSlice.actions;
 
 export default tokensSlice.reducer;
