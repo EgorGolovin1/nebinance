@@ -25,7 +25,7 @@ const EditModalWindow = ({ closeEditModal, isOpen }) => {
     dispatch(
       finishEditing({
         id: edit.id,
-        src: `./crypto-items/${data.abbreviation.toUpperCase()}.svg`,
+        src: `../crypto-items/${data.abbreviation.toUpperCase()}.svg`,
         name: data.name,
         abbreviation: data.abbreviation,
         myAmount: Number(data.amount),

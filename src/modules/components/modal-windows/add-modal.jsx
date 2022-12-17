@@ -25,7 +25,7 @@ const AddModalWindow = ({ closeAddModal, isOpen }) => {
       addToken({
         name: data.name,
         abbreviation: data.abbreviation,
-        src: `./crypto-items/${data.abbreviation.toUpperCase()}.svg`,
+        src: `../crypto-items/${data.abbreviation.toUpperCase()}.svg`,
         myAmount: Number(data.amount),
         annotation: data.note,
       })

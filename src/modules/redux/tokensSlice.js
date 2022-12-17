@@ -26,6 +26,7 @@ export const tokensSlice = createSlice({
         id: id,
         isView: false,
         isEditing: false,
+        main: false,
       });
     },
     editToken(state, action) {
@@ -50,6 +51,16 @@ export const tokensSlice = createSlice({
     searchToken(state, action) {
       state.searchParam = action.payload;
     },
+    showDetails(state, action) {
+      state.tokens.map((item) => {
+        if (item.id === action.payload) return (item.main = true);
+        else return (item.main = false);
+      });
+    },
+    closeDetails(state, action) {
+      const token = state.tokens.find((item) => item.id === action.payload);
+      token.main = false;
+    },
   },
 });
 
@@ -60,6 +71,8 @@ export const {
   finishEditing,
   deleteToken,
   searchToken,
+  closeDetails,
+  showDetails,
 } = tokensSlice.actions;
 
 export default tokensSlice.reducer;
