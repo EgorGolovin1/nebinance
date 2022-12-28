@@ -1,0 +1,116 @@
+.wrapper_main
+    z-index: 15
+
+.wapper_secondary
+  display: flex
+  justify-content: center
+  padding: 200px 50px
+
+.item_main
+    display: flex
+    z-index: 15
+
+.picture_main
+    width: 300px
+    height: 300px
+    margin-left: 50px
+
+.name_main
+    font-size: 40px
+    color: white
+    margin: 50px 0 0 50px
+
+.name_main
+    font-size: 60px
+    font-weight: 700
+    text-transform: uppercase
+
+.close_button
+    width: 150px
+    height: fit-content
+    position: relative
+    display: block
+    color: white
+    font-weight: 500
+    font-size: 20px
+    text-decoration: none
+    border: 2px solid #777E90
+    padding: 14px
+    overflow: hidden
+    transition: 1s all ease
+    z-index: 16
+    background-color: rgba(0, 0, 0, 0 )
+    border-radius: 20px
+    cursor: pointer
+    margin: 10px 0 0 50px
+    &::before
+        background: #353945
+        content: ""
+        position: absolute
+        top: 50%
+        left: 50%
+        transform: translate(-50%,-50%)
+        transition: all 0.6s ease
+        width: 0%
+        height: 100%
+        z-index: -1
+    &:hover
+        &::before
+            width: 100%
+.link_main
+  text-decoration: none
+
+.amount,.annotation
+    font-size: 20px
+    font-weight: 500
+    color: white
+    margin: 10px 0 0 50px
+
+.annotation
+    font-style: italic
+    word-break: break-all
+    max-width: 380px
+
+@media (min-width: 0px) and (max-width: 990px) 
+    .name_main
+        font-size: 36px
+        margin: 25px 0 0 25px
+        
+    .close_button
+        margin: 10px 0 0 30px
+
+    .amount,.annotation
+        margin: 10px 0 0 30px
+
+@media (min-width: 0px) and (max-width: 780px) 
+    .wapper_secondary
+        display: flex
+        justify-content: center
+        padding: 100px 50px
+
+    .item_main
+        min-width: 360px
+        
+    .picture_main
+        width: 150px
+        height: 150px
+        margin-left: 25px
+
+    .name_main
+        font-size: 20px
+        margin: 25px 0 0 25px
+
+    .close_button
+        width: 75px
+        font-size: 14px
+        margin: 5px 0 0 25px
+        padding: 4px
+
+    .amount,.annotation
+        font-size: 14px
+        font-weight: 500
+        color: white
+        margin: 5px 0 0 25px
+
+    .annotation
+        max-width: 180px

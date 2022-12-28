@@ -5,7 +5,7 @@ import HeaderMenu from "./modules/components/header-menu/header-menu";
 import AddMenu from "./modules/components/add-menu/add-menu";
 import FilterMenu from "./modules/components/filter-menu/filter-menu";
 import ListItems from "./modules/components/list-items/list-items";
-import CryptoItem from "./modules/components/crypto-item/crypto-item";
+import MainItem from "./modules/components/main-item/main-item";
 
 const CryptoApp = () => {
   return (
@@ -22,7 +22,7 @@ const CryptoApp = () => {
             </>
           }
         />
-        <Route path="/items/:id" element={<CryptoItem />}></Route>
+        <Route path="/items/:id" element={<MainItem />}></Route>
       </Routes>
     </div>
   );

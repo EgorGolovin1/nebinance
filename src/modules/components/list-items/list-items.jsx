@@ -31,12 +31,13 @@ const ListItems = () => {
   return (
     <>
       <div className={s.list}>
-        {tokens.map((item) => (
+        {tokens.map((item, index) => (
           <CryptoItem
             {...item}
             key={item.id}
             openViewModal={openViewModal}
             openEditModal={openEditModal}
+            newIndex={index}
           />
         ))}
         {search && !tokens.length ? (
