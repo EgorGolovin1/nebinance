@@ -1,11 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import classNames from "classnames/bind";
 
 import { toggleToken, editToken } from "../../redux/tokensSlice";
-import { tokenSelector } from "../../redux/selectors";
 
 import s from "./crypto-item.module.sass";
 
@@ -18,7 +17,6 @@ const CryptoItem = ({
   isView,
 }) => {
   const dispatch = useDispatch();
-  const tokens = useSelector(tokenSelector);
 
   const viewToken = () => {
     dispatch(toggleToken(id));
@@ -38,10 +36,7 @@ const CryptoItem = ({
       >
         <img alt="eye" className={s.picture} src="./view.svg" />
       </button>
-      <Link
-        className={s.button}
-        to={`/items/${tokens.findIndex((el) => el.id === id) + 1}`}
-      >
+      <Link className={s.button} to={`/items/${id}`}>
         <img src={src} alt="./search.svg" className={s.item_picture} id={id} />
         {name}
       </Link>

@@ -3,27 +3,22 @@ import { v4 as uuidv4 } from "uuid";
 import { dataIcons } from "../data/image-data";
 import { localStorageService, coins } from "../services/storage-service";
 
-const init = (data) => {
-  data = localStorageService.get("coins");
-  if (!data) {
+const init = () => {
+  if (!localStorageService.get("coins")) {
     localStorageService.save(coins, "coins");
-    data = localStorageService.get("coins");
-    return data;
   }
-  return data;
+
+  return localStorageService.get("coins");
 };
 
-let tokensArr = init();
-
-const initialValue = {
-  tokens: tokensArr,
+const initialState = {
+  tokens: init(),
   icons: dataIcons,
-  searchParam: "",
 };
 
 export const tokensSlice = createSlice({
   name: "CryptoApp",
-  initialState: initialValue,
+  initialState: initialState,
   reducers: {
     toggleToken(state, action) {
       const token = state.tokens.find((item) => item.id === action.payload);
@@ -31,7 +26,6 @@ export const tokensSlice = createSlice({
     },
     addToken(state, action) {
       const id = uuidv4();
-      console.log(state.tokens);
       state.tokens.push({
         ...action.payload,
         src:
@@ -66,19 +60,10 @@ export const tokensSlice = createSlice({
       token.isEditing = false;
       localStorageService.save(state.tokens, "coins");
     },
-    searchToken(state, action) {
-      state.searchParam = action.payload;
-    },
   },
 });
 
-export const {
-  toggleToken,
-  addToken,
-  editToken,
-  finishEditing,
-  deleteToken,
-  searchToken,
-} = tokensSlice.actions;
+export const { toggleToken, addToken, editToken, finishEditing, deleteToken } =
+  tokensSlice.actions;
 
 export default tokensSlice.reducer;

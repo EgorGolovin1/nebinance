@@ -1,17 +1,15 @@
 import React from "react";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { getTokenById } from "../../redux/selectors";
 
-import { getMainItemById } from "../../redux/selectors";
+import s from "./item.module.sass";
 
-import s from "./main-item.module.sass";
-
-const MainItem = () => {
+const Item = () => {
   const { id } = useParams();
 
-  let idQuery = id - 1;
-
-  const token = getMainItemById(idQuery);
+  const token = useSelector(getTokenById(id));
 
   return (
     <div className={s.wapper_secondary}>
@@ -48,4 +46,4 @@ const MainItem = () => {
   );
 };
 
-export default MainItem;
+export default Item;

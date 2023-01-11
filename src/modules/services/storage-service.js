@@ -106,18 +106,9 @@ const LocalStorageService = () => {
     }
   };
 
-  const getById = (id, key) => {
-    const data = localStorage.getItem(`${uuid}-${key}`);
-
-    if (data) {
-      return JSON.parse(data)[id];
-    }
-  };
-
   return {
     save,
     get,
-    getById,
   };
 };
 
