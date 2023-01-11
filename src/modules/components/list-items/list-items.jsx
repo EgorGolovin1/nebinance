@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
 
 import CryptoItem from "../crypto-item/crypto-item";
 import ViewModalWindow from "../modal-windows/view-modal";
 import EditModalWindow from "../modal-windows/edit-modal";
-import { tokenSelector, searchSelector } from "../../redux/selectors";
+import { useTokens } from "../../hooks/useTokens/useTokens";
 
 import s from "./list-items.module.sass";
 
@@ -25,21 +24,21 @@ const ListItems = () => {
     setEditModalIsOpen(false);
   }
 
-  const tokens = useSelector(tokenSelector);
-  const search = useSelector(searchSelector);
+  const { tokens, coinQuery } = useTokens();
 
   return (
     <>
       <div className={s.list}>
-        {tokens.map((item) => (
+        {tokens.map((item, index) => (
           <CryptoItem
             {...item}
             key={item.id}
             openViewModal={openViewModal}
             openEditModal={openEditModal}
+            newIndex={index}
           />
         ))}
-        {search && !tokens.length ? (
+        {coinQuery && !tokens.length ? (
           <h2 className={s.text}>
             Nothing found ... Try to change search term
           </h2>

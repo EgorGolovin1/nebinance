@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Modal from "react-modal";
 
 import { finishEditing, deleteToken } from "../../redux/tokensSlice";
-import { editTokenSelector } from "../../redux/selectors";
+import { editTokensSelector } from "../../redux/selectors";
 
 import { customStyles } from "../../../modalStyles";
 import s from "./edit-modal.module.sass";
@@ -25,7 +25,7 @@ const EditModalWindow = ({ closeEditModal, isOpen }) => {
     dispatch(
       finishEditing({
         id: edit.id,
-        src: `./crypto-items/${data.abbreviation.toUpperCase()}.svg`,
+        src: `../crypto-items/${data.abbreviation.toUpperCase()}.svg`,
         name: data.name,
         abbreviation: data.abbreviation,
         myAmount: Number(data.amount),
@@ -42,7 +42,7 @@ const EditModalWindow = ({ closeEditModal, isOpen }) => {
     closeEditModal();
   };
 
-  const edit = useSelector(editTokenSelector);
+  const edit = useSelector(editTokensSelector);
   return (
     <Modal
       style={customStyles}

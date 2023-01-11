@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Modal from "react-modal";
 
 import { toggleToken } from "../../redux/tokensSlice";
-import { viewTokenSelector } from "../../redux/selectors";
+import { viewTokensSelector } from "../../redux/selectors";
 
 import { customStyles } from "../../../modalStyles";
 import s from "./view-modal.module.sass";
@@ -15,7 +15,7 @@ const ViewModalWindow = ({ closeViewModal, isOpen }) => {
     dispatch(toggleToken(id));
     closeViewModal();
   };
-  const view = useSelector(viewTokenSelector);
+  const view = useSelector(viewTokensSelector);
   return (
     <Modal
       id="modal-view"
