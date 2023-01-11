@@ -1,7 +1,6 @@
 import { createSelector } from "@reduxjs/toolkit";
 
 export const rootSelector = (state) => state.tokens.tokens;
-export const searchSelector = (state) => state.tokens.searchParam;
 
 export const getTokens = (searchQuery = "") => {
   if (searchQuery) {
